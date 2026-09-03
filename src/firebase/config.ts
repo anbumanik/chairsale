@@ -1,7 +1,4 @@
-import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
-import { getStorage } from 'firebase/storage';
+import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -13,11 +10,17 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase only if it hasn't been initialized yet
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+// Check if real credentials are present
+export const isFirebaseConfigured =
+  !!firebaseConfig.apiKey &&
+  !firebaseConfig.apiKey.includes('your-') &&
+  !!firebaseConfig.databaseURL &&
+  !firebaseConfig.databaseURL.includes('your-');
 
-const auth = getAuth(app);
-const database = getDatabase(app);
-const storage = getStorage(app);
+let app: FirebaseApp | null = null;
 
-export { app, auth, database, storage };
+if (isFirebaseConfigured) {
+  app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+}
+
+export { app };

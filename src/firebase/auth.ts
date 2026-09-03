@@ -1,14 +1,14 @@
-import { auth } from './config';
-import { 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
+import { app, isFirebaseConfigured } from './config';
+import { getAuth } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  User as FirebaseUser
+  User as FirebaseUser,
 } from 'firebase/auth';
 
-// Add any custom auth utility functions here if needed.
-// For example, role checks or specialized sign-in wrappers.
+const auth = isFirebaseConfigured && app ? getAuth(app) : null;
 
 export {
   auth,
