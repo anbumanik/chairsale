@@ -87,10 +87,10 @@ export default function HeroBanner() {
           {loading ? (
             <div className="hero-slide" style={{ width: '100vw' }}>
               <div className="hero-slide-img skeleton" />
-              <div className="hero-slide-text" style={{ gap: '1.5rem' }}>
-                <div className="skeleton skeleton-line skeleton-line-xs" />
-                <div className="skeleton" style={{ height: '72px', width: '70%', borderRadius: '4px' }} />
-                <div className="skeleton skeleton-line skeleton-line-lg" />
+              <div className="hero-slide-text">
+                <div className="skeleton skeleton-line skeleton-line-xs mb-6" />
+                <div className="skeleton mb-6" style={{ height: '72px', width: '70%', borderRadius: '4px' }} />
+                <div className="skeleton skeleton-line skeleton-line-lg mb-4" />
                 <div className="skeleton skeleton-line skeleton-line-md" />
               </div>
             </div>
@@ -111,22 +111,22 @@ export default function HeroBanner() {
 
                 {/* TEXT PORTION */}
                 <div className="hero-slide-text">
-                  <div className="hero-eyebrow" style={{ marginBottom: '1.5rem' }}>
+                  <div className="hero-eyebrow mb-6">
                     <span className="hero-eyebrow-line" />
                     New Collection 2025
                   </div>
 
-                  <h1 className="hero-title" style={{ marginBottom: '1.5rem' }}>
+                  <h1 className="hero-title mb-6">
                     {banner.title.split('\n').map((line, i) => (
                       <span key={i} style={{ display: 'block' }}>{line}</span>
                     ))}
                   </h1>
 
                   {banner.subtitle && (
-                    <p className="hero-subtitle" style={{ marginBottom: '2.5rem' }}>{banner.subtitle}</p>
+                    <p className="hero-subtitle mb-8">{banner.subtitle}</p>
                   )}
 
-                  <div className="hero-actions" style={{ marginBottom: '3rem' }}>
+                  <div className="hero-actions mb-10">
                     <Link href={banner.buttonLink ?? '/products'} className="btn-primary">
                       {banner.buttonText ?? 'Shop Now'}
                     </Link>

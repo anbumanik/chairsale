@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import HeroBanner from '@/components/home/HeroBanner';
 import FeaturedCategories from '@/components/home/FeaturedCategories';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
-import FeaturesStrip from '@/components/layout/FeaturesStrip';
 
 export const metadata: Metadata = {
   title: 'SitWell — Premium Office Chairs & Furniture',
@@ -14,7 +13,6 @@ export default function HomePage() {
   return (
     <>
       <HeroBanner />
-      <FeaturesStrip />
       <FeaturedCategories />
       <FeaturedProducts />
     </>

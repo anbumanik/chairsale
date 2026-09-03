@@ -20,28 +20,37 @@ export async function getProductById(productId: string): Promise<Product | null>
   return { id: productId, ...snapshot.val() } as Product;
 }
 
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+  const db = getDb();
+  if (!db) return null;
+  const snapshot = await get(ref(db, 'products'));
+  if (!snapshot.exists()) return null;
+  const data = snapshot.val();
+  const foundId = Object.keys(data).find(id => data[id].slug === slug);
+  if (!foundId) return null;
+  return { id: foundId, ...data[foundId] } as Product;
+}
+
 export async function getFeaturedProducts(): Promise<Product[]> {
   const db = getDb();
   if (!db) return [];
-  const q = query(ref(db, 'products'), orderByChild('isFeatured'), equalTo(true));
-  const snapshot = await get(q);
+  const snapshot = await get(ref(db, 'products'));
   if (!snapshot.exists()) return [];
   const data = snapshot.val();
   return Object.keys(data)
     .map((id) => ({ id, ...data[id] } as Product))
-    .filter((p) => p.isActive);
+    .filter((p) => p.isActive && p.isFeatured);
 }
 
 export async function getProductsByCategory(categoryId: string): Promise<Product[]> {
   const db = getDb();
   if (!db) return [];
-  const q = query(ref(db, 'products'), orderByChild('categoryId'), equalTo(categoryId));
-  const snapshot = await get(q);
+  const snapshot = await get(ref(db, 'products'));
   if (!snapshot.exists()) return [];
   const data = snapshot.val();
   return Object.keys(data)
     .map((id) => ({ id, ...data[id] } as Product))
-    .filter((p) => p.isActive);
+    .filter((p) => p.isActive && p.categoryId === categoryId);
 }
 
 export function subscribeToProduct(productId: string, callback: (product: Product | null) => void) {

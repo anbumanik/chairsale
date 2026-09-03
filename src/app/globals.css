@@ -355,13 +355,55 @@ button { cursor: pointer; font-family: var(--font-body); border: none; outline: 
   }
   .hero-slide-img {
     width: 100vw;
-    height: 45%;
+    height: 40%;
   }
   .hero-slide-text {
     width: 100vw;
-    height: 55%;
-    padding: 2rem;
-    padding-top: 2rem;
+    height: 60%;
+    padding: 1rem 1.5rem;
+    padding-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto;
+  }
+  .hero-slide-text .mb-6 { margin-bottom: 0.5rem !important; }
+  .hero-slide-text .mb-8 { margin-bottom: 0.75rem !important; }
+  .hero-slide-text .mb-10 { margin-bottom: 1rem !important; }
+  .hero-title {
+    font-size: 1.8rem !important;
+    line-height: 1.1;
+  }
+  .hero-subtitle {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    max-width: 95%;
+  }
+  .hero-actions {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 250px;
+  }
+  .hero-actions a {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-stats {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    border-top: none;
+    margin-top: 0;
+  }
+  .hero-stat-value {
+    font-size: 1rem;
+  }
+  .hero-stat-label {
+    font-size: 0.65rem;
   }
 }
 
