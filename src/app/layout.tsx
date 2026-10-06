@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import { Outfit, Playfair_Display } from 'next/font/google';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import './globals.css';
 
 const outfit = Outfit({
@@ -20,21 +18,18 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: 'SitWell — Premium Office Chairs & Furniture',
-    template: '%s | SitWell',
+    default: 'Corplane',
+    template: '%s | Corplane',
   },
-  description:
-    'Discover premium office chairs, gaming chairs, accent chairs and more. Thoughtfully curated for modern professionals. Free delivery on orders above ₹5,000.',
-  keywords: ['office chairs', 'ergonomic chairs', 'premium furniture', 'gaming chairs', 'accent chairs'],
+  description: 'Corplane - The best project',
+  keywords: [],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${outfit.variable} ${playfair.variable}`}>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <main className="min-h-screen">{children}</main>
       </body>
     </html>
   );

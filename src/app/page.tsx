@@ -1,20 +1,42 @@
-import type { Metadata } from 'next';
-import HeroBanner from '@/components/home/HeroBanner';
-import FeaturedCategories from '@/components/home/FeaturedCategories';
-import FeaturedProducts from '@/components/home/FeaturedProducts';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'SitWell — Premium Office Chairs & Furniture',
-  description:
-    'Shop the finest collection of ergonomic office chairs, gaming chairs, accent chairs, recliners and more. Premium quality, expert curation, free delivery above ₹5,000.',
-};
+import React, { useState } from "react";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import GiftPlans from "@/components/GiftPlans";
+import Features from "@/components/Features";
+import HowItWorks from "@/components/HowItWorks";
+import Customization from "@/components/Customization";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import QuoteForm from "@/components/QuoteForm";
+import Footer from "@/components/Footer";
 
-export default function HomePage() {
+export default function CoreplaneLandingPage() {
+  const [selectedPlanId, setSelectedPlanId] = useState("");
+
+  const handlePlanSelect = (planId: string) => {
+    setSelectedPlanId(planId);
+    const formSection = document.getElementById("quote-form");
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <>
-      <HeroBanner />
-      <FeaturedCategories />
-      <FeaturedProducts />
-    </>
+    <div className="min-h-screen bg-page text-primary flex flex-col font-sans">
+      <Header />
+      <main className="flex-grow">
+        <Hero />
+        <GiftPlans onSelectPlan={handlePlanSelect} />
+        <Features />
+        <HowItWorks />
+        <Customization />
+        <Testimonials />
+        <FAQ />
+        <QuoteForm selectedPlanId={selectedPlanId} onPlanChange={setSelectedPlanId} />
+      </main>
+      <Footer />
+    </div>
   );
 }
