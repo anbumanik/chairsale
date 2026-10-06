@@ -5,7 +5,7 @@ export default function Testimonials() {
   return (
     <section className="section-padding bg-light">
       <div className="w-full">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">What Our Clients Say</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-[#CD9A34]">What Our Clients Say</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {

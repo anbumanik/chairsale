@@ -3,7 +3,7 @@ import { Check, Palette } from "lucide-react";
 
 export default function Customization() {
   return (
-    <section id="customization" className="section-padding bg-black text-white">
+    <section id="customization" className="section-padding bg-[#123524] text-white">
       <div className="w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -32,12 +32,12 @@ export default function Customization() {
               </li>
             </ul>
           </div>
-          <div className="bg-white/5 rounded-2xl aspect-square flex items-center justify-center border border-white/10 p-8 transform -translate-x-4 md:-translate-x-12">
-            {/* Placeholder for customization image */}
-            <div className="text-center opacity-50">
-              <Palette className="w-24 h-24 mx-auto mb-4" />
-              <p className="text-xl">Premium Branding Experience</p>
-            </div>
+          <div className="rounded-2xl aspect-square overflow-hidden shadow-2xl border-4 border-[#CD9A34]/20 transform -translate-x-4 md:-translate-x-12 relative">
+            <img 
+              src="/premium-gift-box.png" 
+              alt="Premium Branding Experience" 
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
+            />
           </div>
         </div>
       </div>

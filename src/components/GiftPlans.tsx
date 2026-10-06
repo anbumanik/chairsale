@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Check } from "lucide-react";
+import { Check, Crown, Heart, Gift, Candy, Flower2, Flame, Mail, ArrowRight, Leaf } from "lucide-react";
 import { plans } from "@/data/plans";
 
 interface GiftPlansProps {
@@ -9,12 +9,25 @@ interface GiftPlansProps {
 }
 
 export default function GiftPlans({ onSelectPlan }: GiftPlansProps) {
+  const getFeatureIcon = (index: number) => {
+    switch (index) {
+      case 0: return <Gift className="w-4 h-4 text-[#123524]" strokeWidth={1.5} />;
+      case 1: return <Candy className="w-4 h-4 text-[#123524]" strokeWidth={1.5} />;
+      case 2: return <Flower2 className="w-4 h-4 text-[#123524]" strokeWidth={1.5} />;
+      case 3: return <Flame className="w-4 h-4 text-[#123524]" strokeWidth={1.5} />;
+      case 4: return <Mail className="w-4 h-4 text-[#123524]" strokeWidth={1.5} />;
+      default: return <Check className="w-4 h-4 text-[#123524]" strokeWidth={1.5} />;
+    }
+  };
+
   return (
-    <section id="plans" className="section-padding bg-white">
+    <section id="plans" className="section-padding bg-[#123524]">
       <div className="w-full">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Gift Plan</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            Choose Your <span className="bg-gradient-to-b from-[#FDF1BA] via-[#D4AF37] to-[#996515] bg-clip-text text-transparent drop-shadow-sm font-extrabold">Gift Plan</span>
+          </h2>
+          <p className="text-white/80 max-w-2xl mx-auto">
             Carefully curated hampers to suit your budget and express your gratitude.
           </p>
         </div>
@@ -23,7 +36,7 @@ export default function GiftPlans({ onSelectPlan }: GiftPlansProps) {
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`flip-card h-[500px] w-full ${plan.isPopular ? "md:-mt-8 md:mb-8" : ""}`}
+              className={`flip-card h-[580px] w-full ${plan.isPopular ? "md:-mt-8 md:mb-8" : ""}`}
               tabIndex={0}
             >
               <div className="flip-card-inner">
@@ -45,30 +58,70 @@ export default function GiftPlans({ onSelectPlan }: GiftPlansProps) {
                       </p>
                     </div>
                   )}
-                </div>
+                </div>                {/* Back Side */}
+                <div className="flip-card-back border-none rounded-2xl flex flex-col bg-[#F6F4ED] text-[#123524] shadow-xl overflow-hidden relative">
+                  {/* Decorative Background Elements */}
+                  <div className="absolute top-0 right-0 w-32 h-32 opacity-10 pointer-events-none overflow-hidden">
+                    <Leaf className="w-24 h-24 absolute -top-4 -right-4 text-[#123524] rotate-45" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 opacity-10 pointer-events-none overflow-hidden">
+                    <Leaf className="w-24 h-24 absolute -bottom-4 -left-4 text-[#123524] -rotate-135" />
+                  </div>
+                  <div className="absolute bottom-0 right-0 w-full h-12 pointer-events-none opacity-80" 
+                       style={{ background: 'linear-gradient(135deg, transparent 50%, #123524 50%)', borderRadius: '0 0 1rem 0' }}>
+                    <div className="absolute bottom-1 right-2 text-[#C89A3C] opacity-80 text-xs tracking-widest">✧</div>
+                  </div>
 
-                {/* Back Side */}
-                <div className={`flip-card-back border rounded-2xl p-8 flex flex-col ${plan.isPopular ? "border-black shadow-xl bg-black text-white" : "border-border shadow-sm bg-white text-black"}`}>
-                  <h3 className="text-2xl font-bold mb-4 border-b pb-2 border-opacity-20 border-gray-400">{plan.name} Features</h3>
-                  <ul className="flex-grow space-y-4 mb-8 overflow-y-auto pr-2 custom-scrollbar">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <Check className={`w-5 h-5 flex-shrink-0 ${plan.isPopular ? "text-[#CD9A34]" : "text-black"}`} />
-                        <span className={`text-sm ${plan.isPopular ? "text-gray-300" : "text-gray-700"}`}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="relative z-10 flex flex-col h-full p-6">
+                    {/* Header */}
+                    <div className="flex flex-col items-center mb-2">
+                      {plan.isPopular ? (
+                        <Crown className="w-5 h-5 text-[#C89A3C] mb-1 fill-[#C89A3C]" />
+                      ) : (
+                        <div className="h-6"></div> /* Spacer when no crown is present */
+                      )}
+                      <div className="bg-[#123524] text-white px-4 py-1 rounded-full text-xs font-bold tracking-[0.2em] uppercase border border-[#C89A3C]/50 shadow-sm">
+                        {plan.name}
+                      </div>
+                    </div>
+                    
+                    {/* Price */}
+                    <div className="text-center mb-3">
+                      <div className="text-4xl font-extrabold text-[#123524] flex items-baseline justify-center tracking-tight">
+                        ₹{plan.price}
+                        <span className="text-lg font-medium ml-1">/box</span>
+                      </div>
+                      <p className="text-[#123524]/80 text-sm mt-0.5 font-medium">Minimum order: {plan.moq} boxes</p>
+                    </div>
 
-                  <button
-                    onClick={() => onSelectPlan(plan.id)}
-                    className={`w-full py-3 rounded-full font-medium transition-colors ${
-                      plan.isPopular
-                        ? "bg-[#CD9A34] text-black hover:bg-[#b8892f]"
-                        : "bg-black text-white hover:bg-gray-800"
-                    }`}
-                  >
-                    Choose Plan
-                  </button>
+                    {/* Divider */}
+                    <div className="flex items-center justify-center mb-3">
+                      <div className="h-[1px] bg-[#C89A3C] w-12 opacity-50"></div>
+                      <Heart className="w-3 h-3 text-[#C89A3C] mx-3 fill-[#C89A3C]" />
+                      <div className="h-[1px] bg-[#C89A3C] w-12 opacity-50"></div>
+                    </div>
+
+                    {/* Features List */}
+                    <ul className="flex-grow space-y-0 mb-3 overflow-hidden">
+                      {plan.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-3 border-b border-[#123524]/10 py-2.5 first:pt-0 last:border-0 last:pb-0">
+                          <div className="w-8 h-8 rounded-full bg-[#E5E3D8] flex items-center justify-center flex-shrink-0 shadow-inner">
+                            {getFeatureIcon(i)}
+                          </div>
+                          <span className="text-sm font-medium text-[#123524] leading-tight">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Action Button */}
+                    <button
+                      onClick={() => onSelectPlan(plan.id)}
+                      className="w-full mt-auto py-3 rounded-full font-semibold transition-all bg-[#123524] text-white hover:bg-[#0a2015] flex items-center justify-center gap-2 border border-[#C89A3C]/40 shadow-lg group text-sm"
+                    >
+                      Choose Plan 
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="absolute w-full top-0 z-50 bg-transparent">
+      <header className="fixed w-full top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="w-full h-20 flex items-center justify-between px-6 md:px-16">
           <div className="flex items-center gap-2 logo">
             <Gift className="w-8 h-8" />

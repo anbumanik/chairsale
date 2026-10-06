@@ -15,7 +15,7 @@
   --text-inverse: #FFFFFF;
   --bg-light: #F5F5F5;
   --border-color: #E5E5E5;
-  --bg-footer: #000000;
+  --bg-footer: #123524;
 }
 
 html {
@@ -87,11 +87,11 @@ a.hover-link:hover {
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;align-items:start}
 .reveal{opacity:0;transform:translateY(40px);will-change:transform,opacity}
 
-.footer-inner h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.01em;margin-bottom:.8rem;color:#ffffff;}
-.footer-inner h3{font-size:1.05rem;font-weight:800;margin-bottom:1rem;color:#ffffff;}
-.footer-inner p{font-size:.82rem;color:#d4d4d4;max-width:46ch;margin-bottom:1.1rem}
+.footer-inner h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.01em;margin-bottom:.8rem;color:#CD9A34;}
+.footer-inner h3{font-size:1.05rem;font-weight:800;margin-bottom:1rem;color:#CD9A34;}
+.footer-inner p{font-size:.82rem;color:#FDF1BA;max-width:46ch;margin-bottom:1.1rem}
 .footer-inner ul{list-style:none;display:grid;gap:.65rem;padding:0;margin:0}
-.footer-inner a{color:#fff;text-decoration:none;font-size:.85rem}
+.footer-inner a{color:#CD9A34;text-decoration:none;font-size:.85rem}
 .footer-inner a:hover,.footer-inner a:focus-visible{text-decoration:underline}
 
 .signup{display:flex;gap:.6rem;flex-wrap:wrap;max-width:440px}
@@ -100,7 +100,7 @@ a.hover-link:hover {
 .signup button{padding:.8rem 1.4rem;border-radius:999px;border:1px solid #fff;background:#fff;color:#000;font-weight:700;cursor:pointer;transition:.2s}
 .signup button:hover{background:#000;color:#fff}
 
-.copyright{background:#000;color:#999;text-align:center;font-size:.75rem;padding:0 1rem 2rem;margin:0;}
+.copyright{background:var(--bg-footer);color:#CD9A34;text-align:center;font-size:.75rem;padding:0 1rem 2rem;margin:0;}
 
 @media (max-width:800px){
   .footer-inner{grid-template-columns:1fr 1fr}

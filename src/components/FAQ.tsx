@@ -17,7 +17,7 @@ export default function FAQ() {
   return (
     <section className="section-padding bg-white">
       <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#CD9A34]">Frequently Asked Questions</h2>
         <div className="space-y-4">
           {faqs.map((faq, i) => (
             <div key={i} className="border border-border rounded-xl overflow-hidden">
