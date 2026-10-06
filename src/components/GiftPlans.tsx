@@ -23,38 +23,54 @@ export default function GiftPlans({ onSelectPlan }: GiftPlansProps) {
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`border rounded-2xl p-8 bg-white flex flex-col h-full ${
-                plan.isPopular ? "border-black shadow-xl md:-mt-8 md:mb-8" : "border-border shadow-sm"
-              }`}
+              className={`flip-card h-[500px] w-full ${plan.isPopular ? "md:-mt-8 md:mb-8" : ""}`}
+              tabIndex={0}
             >
-              {plan.isPopular && (
-                <div className="bg-black text-white text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full self-start mb-6">
-                  Most Popular
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className={`flip-card-front border rounded-2xl flex flex-col items-center justify-center text-center overflow-hidden ${plan.isPopular ? "border-[#CD9A34] shadow-[0_0_20px_rgba(205,154,52,0.3)]" : "border-border shadow-sm bg-white"}`}>
+                  {plan.id === "Premium" ? (
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-700 hover:scale-110" 
+                      style={{ backgroundImage: 'url("https://res.cloudinary.com/plc1vxrq/image/upload/v1791275954/ChatGPT_Image_Oct_6_2026_01_55_45_PM.png")' }}
+                    />
+                  ) : (
+                    <div className="relative z-10 p-8 flex flex-col items-center justify-center w-full h-full text-black">
+                      <h3 className="text-3xl font-bold mb-4">{plan.name}</h3>
+                      <div className="text-5xl font-extrabold mb-4">₹{plan.price}<span className="text-xl font-normal opacity-80"> /box</span></div>
+                      <p className="text-md opacity-80">Minimum order: {plan.moq} boxes</p>
+                      <p className="mt-8 text-sm font-semibold uppercase tracking-wider animate-pulse flex items-center gap-2 text-black/60">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 2v6h-6"></path><path d="M21 13a9 9 0 1 1-3-7.7L21 8"></path></svg>
+                        Hover for Details
+                      </p>
+                    </div>
+                  )}
                 </div>
-              )}
-              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-              <div className="text-4xl font-extrabold mb-2">₹{plan.price}<span className="text-lg text-gray-500 font-normal"> /box</span></div>
-              <p className="text-sm text-gray-500 mb-6 pb-6 border-b border-border">Minimum order: {plan.moq} boxes</p>
-              
-              <ul className="flex-grow space-y-4 mb-8">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 flex-shrink-0 text-black" />
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
 
-              <button
-                onClick={() => onSelectPlan(plan.id)}
-                className={`w-full py-3 rounded-full font-medium transition-colors ${
-                  plan.isPopular
-                    ? "bg-black text-white hover:bg-gray-800"
-                    : "bg-white text-black border border-black hover:bg-gray-50"
-                }`}
-              >
-                Choose Plan
-              </button>
+                {/* Back Side */}
+                <div className={`flip-card-back border rounded-2xl p-8 flex flex-col ${plan.isPopular ? "border-black shadow-xl bg-black text-white" : "border-border shadow-sm bg-white text-black"}`}>
+                  <h3 className="text-2xl font-bold mb-4 border-b pb-2 border-opacity-20 border-gray-400">{plan.name} Features</h3>
+                  <ul className="flex-grow space-y-4 mb-8 overflow-y-auto pr-2 custom-scrollbar">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className={`w-5 h-5 flex-shrink-0 ${plan.isPopular ? "text-[#CD9A34]" : "text-black"}`} />
+                        <span className={`text-sm ${plan.isPopular ? "text-gray-300" : "text-gray-700"}`}>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    onClick={() => onSelectPlan(plan.id)}
+                    className={`w-full py-3 rounded-full font-medium transition-colors ${
+                      plan.isPopular
+                        ? "bg-[#CD9A34] text-black hover:bg-[#b8892f]"
+                        : "bg-black text-white hover:bg-gray-800"
+                    }`}
+                  >
+                    Choose Plan
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>

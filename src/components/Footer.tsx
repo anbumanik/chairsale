@@ -125,7 +125,6 @@ export default function Footer() {
                 <li><a href="#">Who we are</a></li>
                 <li><a href="#">Our values</a></li>
                 <li><a href="#plans">Gift plans</a></li>
-                <li><a href="#">Careers</a></li>
                 <li><a href="#">Corporate gifting</a></li>
               </ul>
             </nav>
