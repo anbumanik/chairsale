@@ -3,23 +3,27 @@ import React from "react";
 export default function Hero() {
   return (
     <section className="relative bg-light overflow-hidden">
-      <div className="absolute inset-0">
-        {/* Placeholder for festive background image */}
-        <div className="w-full h-full bg-gradient-to-br from-orange-100 to-rose-100 opacity-60"></div>
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="https://res.cloudinary.com/plc1vxrq/video/upload/v1791272968/Corporate_Diwali_gift_video_concept_20261006121019.mp4" type="video/mp4" />
+        </video>
       </div>
-      <div className="relative w-full py-24 md:py-32 flex flex-col items-center text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-4xl leading-tight">
-          Make This Diwali Memorable for Your Team
+      <div className="relative w-full pt-24 pb-64 md:pt-32 md:pb-96 flex flex-col items-center text-center">
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 max-w-4xl leading-tight text-white drop-shadow-lg" style={{ fontFamily: 'var(--font-playfair)' }}>
+          Make This Diwali <span className="text-[#B8860B] italic">Memorable</span><br />for Your Team
         </h1>
-        <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl">
-          Premium corporate gifting solutions with customizable branding, bulk pricing, and pan-India delivery.
+        <p className="text-sm md:text-base text-white font-normal mb-10 max-w-4xl drop-shadow-md">
+          Premium corporate gifting with custom branding, bulk pricing and pan-India delivery.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <a href="#plans" className="btn-black bg-white !text-black border-2 border-black hover:bg-gray-100">
-            View Gift Plans
-          </a>
-          <a href="#quote-form" className="btn-black">
-            Get a Quote
+        <div className="flex flex-col sm:flex-row gap-6 mt-4">
+          <a href="#plans" className="px-8 py-3.5 rounded-full bg-[#CD9A34] text-black font-bold text-lg hover:bg-[#b8892f] transition-all shadow-[0_0_30px_rgba(205,154,52,0.4)] inline-block">
+            Explore Gift Plans
           </a>
         </div>
       </div>

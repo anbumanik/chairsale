@@ -10,22 +10,24 @@ export default function Header() {
   return (
     <>
       <header className="absolute w-full top-0 z-50 bg-transparent">
-        <div className="w-full h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className="w-full h-20 flex items-center justify-between px-6 md:px-16">
+          <div className="flex items-center gap-2 logo">
             <Gift className="w-8 h-8" />
-            <span className="text-2xl font-bold tracking-tight">Coreplane</span>
+            <span className="text-3xl tracking-tight">Coreplane</span>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="hover-link font-medium">Home</a>
-            <a href="#who-we-are" className="hover-link font-medium">Who We Are</a>
-            <a href="#plans" className="hover-link font-medium">Gift Plans</a>
-            <a href="#faq" className="hover-link font-medium">FAQs</a>
-            <a href="#contact" className="hover-link font-medium">Contact Us</a>
+          <nav className="hidden md:flex items-center gap-12">
+            <a href="#" className="font-medium text-white hover:text-[#B8860B] transition-colors">Home</a>
+            <a href="#who-we-are" className="font-medium text-white hover:text-[#B8860B] transition-colors">Who We Are</a>
+            <a href="#plans" className="font-medium text-white hover:text-[#B8860B] transition-colors">Gift Plans</a>
+            <a href="#faq" className="font-medium text-white hover:text-[#B8860B] transition-colors">FAQs</a>
+            <a href="#contact" className="font-medium text-white hover:text-[#B8860B] transition-colors">Contact Us</a>
           </nav>
 
           <div className="hidden md:block">
-            <a href="#quote-form" className="btn-black">Get a Quote</a>
+            <a href="#quote-form" className="px-6 py-2.5 rounded-full bg-[#CD9A34] text-black font-bold hover:bg-[#b8892f] transition-all shadow-[0_0_20px_rgba(205,154,52,0.4)] inline-block">
+              Get a Quote
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}

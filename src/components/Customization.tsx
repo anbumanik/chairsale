@@ -32,7 +32,7 @@ export default function Customization() {
               </li>
             </ul>
           </div>
-          <div className="bg-white/5 rounded-2xl aspect-square flex items-center justify-center border border-white/10 p-8">
+          <div className="bg-white/5 rounded-2xl aspect-square flex items-center justify-center border border-white/10 p-8 transform -translate-x-4 md:-translate-x-12">
             {/* Placeholder for customization image */}
             <div className="text-center opacity-50">
               <Palette className="w-24 h-24 mx-auto mb-4" />

@@ -28,6 +28,12 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
 }
 
+.logo {
+  color: #FFFFFF;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-weight: 700;
+}
+
 /* Base styles for the requested minimal UI */
 a.hover-link {
   color: var(--text-primary);
